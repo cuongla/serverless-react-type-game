@@ -11,12 +11,13 @@ import { useHistory } from 'react-router-dom';
 import { Strong } from '../styled/Random';
 
 // context
-import { userScore } from '../context/ScoreContext';
+import { useScore } from '../context/ScoreContext';
 
 const Game: FC = () => {
     const history = useHistory();
     const MAX_SECONDS = 5;
-    const [score, setScore] = userScore(0);
+    // @ts-ignore
+    const { score, setScore } = useScore(0);
     const [ms, setMs] = useState<number | string>(999);
     const [seconds, setSeconds] = useState<number | string>(MAX_SECONDS);
     const [currentCharacter, setCurrentCharacter] = useState<string>('');
@@ -69,10 +70,10 @@ const Game: FC = () => {
     const keyUpHandler = useCallback(
         (e) => {
             if (e.key === currentCharacter) {
-                setScore((prevScore) => prevScore + 1);
+                setScore((prevScore: number) => prevScore + 1);
             } else {
                 if (score > 0) {
-                    setScore((prevScore) => prevScore - 1);
+                    setScore((prevScore: number) => prevScore - 1);
                 }
             }
             setRandomCharacter();
