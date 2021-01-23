@@ -1,4 +1,4 @@
-import React, { FC, ReactNode. useState, useContext } from 'react';
+import React, { FC, ReactNode, useState, useContext } from 'react';
 
 // types
 interface ScoreProviderProps {
