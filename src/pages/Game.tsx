@@ -6,19 +6,26 @@ import {
     StyledTimer,
 } from '../styled/Game';
 import { useHistory } from 'react-router-dom';
+
+// styles
 import { Strong } from '../styled/Random';
+
+// context
+import { userScore } from '../context/ScoreContext';
 
 const Game: FC = () => {
     const history = useHistory();
-    const [score, setScore] = useState<number>(0);
-    const MAX_SECONDS = 50;
+    const MAX_SECONDS = 5;
+    const [score, setScore] = userScore(0);
     const [ms, setMs] = useState<number | string>(999);
     const [seconds, setSeconds] = useState<number | string>(MAX_SECONDS);
     const [currentCharacter, setCurrentCharacter] = useState<string>('');
-    const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const characters = 'abcdefghijklmnopqrstuvwxyz';
 
+    // start the game
     useEffect(() => {
         setRandomCharacter();
+        setScore(0)
         const currentTime = new Date();
         const interval = setInterval(() => updateTime(currentTime), 1);
         return () => {
@@ -26,11 +33,13 @@ const Game: FC = () => {
         };
     }, []);
 
+    // generate random characters
     const setRandomCharacter = () => {
         const randomInt = Math.floor(Math.random() * 36);
         setCurrentCharacter(characters[randomInt]);
     };
 
+    // set time
     const updateTime = (startTime: Date) => {
         const endTime = new Date();
         const msPassedStr = (
@@ -56,10 +65,9 @@ const Game: FC = () => {
         }
     }, [seconds, ms, history]);
 
-    // control up arrow key
+    // update score if correct character is entered
     const keyUpHandler = useCallback(
         (e) => {
-            console.log(e.key, currentCharacter);
             if (e.key === currentCharacter) {
                 setScore((prevScore) => prevScore + 1);
             } else {
@@ -72,6 +80,7 @@ const Game: FC = () => {
         [currentCharacter, score]
     );
 
+    // update key action 
     useEffect(() => {
         document.addEventListener('keyup', keyUpHandler);
         return () => {

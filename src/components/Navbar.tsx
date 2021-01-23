@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import {
     StyledNavItems,
@@ -8,7 +8,8 @@ import {
 } from '../styled/Navbar';
 import { Accent } from '../styled/Random';
 
-const Navbar = () => {
+
+const Navbar: FC = () => {
     return (
         <StyledNavbar>
             <StyledNavBrand className="nav__brand">
