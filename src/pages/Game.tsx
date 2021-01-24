@@ -34,7 +34,7 @@ const Game: FC = () => {
         return () => {
             clearInterval(interval);
         };
-        //@ts-ignore
+        /* eslint-disable-next-line react-hooks/exhaustive-deps */
     }, [setScore]);
 
     // generate random characters
@@ -81,6 +81,7 @@ const Game: FC = () => {
             }
             setRandomCharacter();
         },
+        /* eslint-disable-next-line react-hooks/exhaustive-deps */
         [currentCharacter, score]
     );
 
