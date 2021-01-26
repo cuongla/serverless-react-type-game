@@ -1,4 +1,4 @@
-import React, { createContext, FC, ReactNode, useState, Dispatch, SetStateAction } from 'react';
+import React, { createContext, FC, ReactNode, useState, Dispatch, SetStateAction, useContext } from 'react';
 
 interface ScoreProviderProps {
     children: ReactNode
@@ -11,6 +11,8 @@ type ScoreContextProps = {
 
 // @ts-ignore
 const ScoreContext = createContext({} as ScoreContextProps);
+const useScore = () => useContext(ScoreContext);
+
 
 const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
     const [score, setScore] = useState<number>(0);
@@ -22,4 +24,4 @@ const ScoreProvider: FC<ScoreProviderProps> = ({ children }) => {
     )
 }
 
-export { ScoreProvider, ScoreContext }
+export { ScoreProvider, useScore }

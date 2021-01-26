@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useCallback, useContext } from 'react';
+import React, { FC, useEffect, useState, useCallback } from 'react';
 import {
     StyledGame,
     StyledCharacter,
@@ -11,14 +11,13 @@ import { useHistory } from 'react-router-dom';
 import { Strong } from '../styled/Random';
 
 // context
-import { ScoreContext } from '../context/ScoreContext';
+import { useScore } from '../context/ScoreContext';
 
 const Game: FC = () => {
     const history = useHistory();
-    const MAX_SECONDS = 30;
+    const MAX_SECONDS = 10;
     // context
-    const useScore = useContext(ScoreContext);
-    const { score, setScore } = useScore;
+    const { score, setScore } = useScore();
     // state
     const [ms, setMs] = useState<number | string>(999);
     const [seconds, setSeconds] = useState<number | string>(MAX_SECONDS);
