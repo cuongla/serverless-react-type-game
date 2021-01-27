@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Typing Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Screenshot of Homepage](https://i.imgur.com/G6ZC9rQ.png)
 
-## Available Scripts
+**Demo**: https://serverless-type-game.netlify.app
 
-In the project directory, you can run:
+A simple serverless React typing game application where users can compete with each other for typing speed.
 
-### `yarn start`
+# Serverless React Application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Front-End
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**React**: a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.
 
-### `yarn test`
+**React Hooks**: functions that let us hook into the React state and lifecycle features from function components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Styled-Components**: a library for React and React Native that allows you to use component-level styles in your application that are written with a mixture of JavaScript and CSS using a technique called CSS-in-JS.
 
-### `yarn build`
+## Back-End
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Netlify Functions**: Serverless functions built into every Netlify account. No setup, servers, or ops required. FYI: https://www.netlify.com/products/functions/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## APIs
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Airtable API**: an easy-to-use online platform for creating and sharing relational databases. The user interface is simple, colorful, friendly, and allows anyone to spin up a database in minutes.
 
-### `yarn eject`
+**Auth0**: a flexible, drop-in solution to add authentication and authorization services to your applications. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To get you started you can clone the repository to your local machine: 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+$ git clone https://github.com/tinla94/OvernightBooking
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Or
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+Download the repository
+```
 
-### Code Splitting
+Also decide whether you will use `yarn` or `npm`.  My preference is `npm` and what the app was built on.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**For npm**: Run `npm install` on both **server** and **client**.
 
-### Analyzing the Bundle Size
+**For yarn**: Run `yarn add` on both **server** and **client**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Prerequisites
 
-### Making a Progressive Web App
+To run, first make sure you have Node installed. You can type `node -v` to find your version:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+$ node -v 
+v13.5.0
+```
 
-### Advanced Configuration
+If you do not have Node installed. You can download from their website: https://nodejs.org/en/download/ or you can install via Homebrew (need to install Homebrew first fo course). Here's a link to a guide: https://www.dyclassroom.com/howto-mac/how-to-install-nodejs-and-npm-on-mac-using-homebrew
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Setup Netlify
 
-### Deployment
+You can follow this link: https://scotch.io/tutorials/build-and-deploy-a-serverless-function-to-netlify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+# Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deploy Web Application to Netlify
+https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/
+
+## Install Node.js Ubuntu
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
+
+## Author
+
+* **Cuong La (Tin)** 
