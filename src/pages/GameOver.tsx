@@ -20,38 +20,39 @@ const GameOver: FC = () => {
     }
 
     useEffect(() => {
+        // saving scores
+        const saveHighScore = async () => {
+            try {
+                const token = await getAccessTokenSilently();
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: 'asdasfsd',
+                        score,
+                    }),
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                };
+                const res = await fetch(
+                    '/.netlify/functions/saveHighScore',
+                    options
+                );
+                const data = await res.json();
+                if (data.id) {
+                    setScoreMessage('Congrats! You got a high score!!');
+                } else {
+                    setScoreMessage('Sorry, not a high score. Keep trying!');
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
         // save high score is its valid authentication
         isAuthenticated && saveHighScore();
-    }, [score, isAuthenticated]);
-
-    // saving scores
-    const saveHighScore = async () => {
-        try {
-            const token = await getAccessTokenSilently();
-            const options = {
-                method: 'POST',
-                body: JSON.stringify({
-                    name: 'asdasfsd',
-                    score,
-                }),
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            };
-            const res = await fetch(
-                '/.netlify/functions/saveHighScore',
-                options
-            );
-            const data = await res.json();
-            if (data.id) {
-                setScoreMessage('Congrats! You got a high score!!');
-            } else {
-                setScoreMessage('Sorry, not a high score. Keep trying!');
-            }
-        } catch (err) {
-            console.error(err);
-        }
-    };
+        // @ts-ignore
+    }, [isAuthenticated, score, getAccessTokenSilently]);
 
     return (
         <div>
@@ -60,7 +61,7 @@ const GameOver: FC = () => {
                 <StyledLink to="/" style={{ marginRight: "12px" }}>Go Home</StyledLink>
                 <StyledLink to="/game">Play Again</StyledLink>
             </div>
-            <hr style={{ margin: '1rem 0'}}/>
+            <hr style={{ margin: '1rem 0' }} />
             <h2>{scoreMessage}</h2>
             {!isAuthenticated && <h2>You should login or sign up to compete for high score</h2>}
             <StyledCharacter>{score}</StyledCharacter>
