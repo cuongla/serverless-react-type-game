@@ -6,9 +6,9 @@ import { StyledTitle } from '../styled/Random';
 const Home: FC = () => {
     return (
         <div>
-            <StyledTitle>Ready to type?</StyledTitle>
+            <StyledTitle>Ready To Type?</StyledTitle>
             <CTA to="/game">
-                Click or Type '<Accent>s</Accent>' to start playing
+                <Accent>Start</Accent>
             </CTA>
         </div>
     )

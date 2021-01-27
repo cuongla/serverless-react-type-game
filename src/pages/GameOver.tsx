@@ -56,15 +56,14 @@ const GameOver: FC = () => {
     return (
         <div>
             <StyledTitle>Game Over</StyledTitle>
+            <div>
+                <StyledLink to="/" style={{ marginRight: "12px" }}>Go Home</StyledLink>
+                <StyledLink to="/game">Play Again</StyledLink>
+            </div>
+            <hr style={{ margin: '1rem 0'}}/>
             <h2>{scoreMessage}</h2>
             {!isAuthenticated && <h2>You should login or sign up to compete for high score</h2>}
             <StyledCharacter>{score}</StyledCharacter>
-            <div>
-                <StyledLink to="/">Go Home</StyledLink>
-            </div>
-            <div>
-                <StyledLink to="/game">Play Again</StyledLink>
-            </div>
         </div>
     );
 }

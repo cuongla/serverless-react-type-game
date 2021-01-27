@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({ toggleTheme }) => {
         <StyledNavbar>
             <StyledNavBrand className="nav__brand">
                 <Link to="/">
-                    Learn.Build.<Accent>Type.</Accent>
+                    Typing.<Accent>Game.</Accent>
                 </Link>
             </StyledNavBrand>
             <StyledNavItems>

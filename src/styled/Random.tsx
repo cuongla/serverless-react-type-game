@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Accent = styled.span`
     color: var(--accent-color);
+    font-weight: bold;
 `;
 
 export const StyledTitle = styled.h1`
