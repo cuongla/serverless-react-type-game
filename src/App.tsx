@@ -12,33 +12,42 @@ import GameOver from './pages/GameOver';
 import Navbar from './components/Navbar';
 
 // Styles
+import { ThemeProvider } from 'styled-components';
+import useTheme from './hooks/useTheme';
 import { GlobalStyle } from './styled/Global';
 import { Container } from './styled/Container';
 import { Main } from './styled/Main';
+import { lightTheme, darkTheme } from './styled/Themes';
+
 
 const App: FC = () => {
   const { isLoading } = useAuth0();
-
-  if(isLoading) {
-    return <p>Loading...</p>
-  }
+  const [theme, toggleTheme] = useTheme();
+  const currentTheme = theme === 'light' ? lightTheme : darkTheme;
 
   return (
     <Router>
-      <GlobalStyle />
-      <Main>
-        <Container>
-          <Navbar />
-          <Switch>
-            <Route path="/game" component={Game} />
-            <Route path="/highScores" component={HighScores} />
-            <Route path="/gameOver" component={GameOver} />
-            <Route path="/" component={Home} />
-          </Switch>
-        </Container>
-      </Main>
+      <ThemeProvider theme={currentTheme}>
+        <GlobalStyle />
+        <Main>
+          {isLoading && <p>Loading...</p>}
+          {!isLoading && (
+            <Container>
+              <Navbar toggleTheme={toggleTheme} />
+              <Switch>
+                <Route path="/game" component={Game} />
+                <Route
+                  path="/highScores"
+                  component={HighScores}
+                />
+                <Route path="/gameOver" component={GameOver} />
+                <Route path="/" component={Home} />
+              </Switch>
+            </Container>
+          )}
+        </Main>
+      </ThemeProvider>
     </Router>
-
   )
 }
 

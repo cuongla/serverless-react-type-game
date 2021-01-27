@@ -5,11 +5,17 @@ import {
     StyledNavbar,
     StyledNavBrand,
     StyledLink,
+    StyledButtonLink
 } from '../styled/Navbar';
+import { StyledButton } from '../styled/Buttons';
 import { Accent } from '../styled/Random';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Navbar: FC = () => {
+interface NavbarProps {
+    toggleTheme: any
+}
+
+const Navbar: FC<NavbarProps> = ({ toggleTheme }) => {
     const { isAuthenticated, loginWithRedirect, logout
     } = useAuth0();
 
@@ -29,17 +35,18 @@ const Navbar: FC = () => {
                 </li>
                 {!isAuthenticated && (
                     <li>
-                        <button onClick={() => loginWithRedirect()}>Log In</button>
+                        <StyledButtonLink onClick={() => loginWithRedirect()}>Log In</StyledButtonLink>
 
                     </li>
                 )}
                 {isAuthenticated && (
                     <li>
-                        <button onClick={() => logout({ returnTo: window.location.origin })}>
+                        <StyledButtonLink onClick={() => logout({ returnTo: window.location.origin })}>
                             Log Out
-                        </button>
+                        </StyledButtonLink>
                     </li>
                 )}
+                <StyledButton onClick={toggleTheme}>Toggle Theme</StyledButton>
             </StyledNavItems>
         </StyledNavbar>
     );
