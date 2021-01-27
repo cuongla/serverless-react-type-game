@@ -1,6 +1,16 @@
 const { table, getHighScores } = require('./utils/airtable');
+const { getAccessTokenFromHeaders, validateAccessToken } = require('./utils/auth');
 
 exports.handler = async (event) => {
+    const token = getAccessTokenFromHeaders(event.headers);
+    const user = await validateAccessToken(token);
+    if (!user) {
+        return {
+            statusCode: 403,
+            body: JSON.stringify({ err: 'Unauthorized' }),
+        };
+    }
+
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
@@ -8,7 +18,8 @@ exports.handler = async (event) => {
         };
     }
 
-    const { score, name } = JSON.parse(event.body);
+    const { score } = JSON.parse(event.body);
+    const name = user['https://react-type-game/username'];
     if (typeof score === 'undefined' || !name) {
         return {
             statusCode: 400,
@@ -20,7 +31,6 @@ exports.handler = async (event) => {
         const records = await getHighScores(false);
 
         const lowestRecord = records[9];
-
         if (
             typeof lowestRecord.fields.score === 'undefined' ||
             score > lowestRecord.fields.score
